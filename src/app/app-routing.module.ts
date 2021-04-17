@@ -13,12 +13,14 @@ import { ProductCrudComponent } from './product/product-crud/product-crud.compon
 import { CheckoutComponent } from './customer/buyer/checkout/checkout.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { WalletComponent } from './shared/layouts/wallet/wallet.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/", pathMatch: "full" },
-  { path: "", component: HomeComponent },
+  { path: "", component: BuyerDashboardComponent },
   { path: "my-profile", component: UserProfileComponent },
   { path: "contact-us", component:ContactUsComponent},
+  { path: "home", component:HomeComponent},
   //Path/component you want to access before admin login/signin
   {
     path: '', canActivate: [AdminAuthGuardLogin], children: [
@@ -54,14 +56,15 @@ const routes: Routes = [
   {
     path: '', canActivate: [BuyerAuthGaurdService], children: [
       { path: "buyer-dashboard", component: BuyerDashboardComponent },
-      { path: "checkout", component: CheckoutComponent }
+      { path: "checkout", component: CheckoutComponent },
+      { path: "wallet", component: WalletComponent },
     ]
   },
   { path: "**", component: PageNotFoundErrorComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: true, relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
