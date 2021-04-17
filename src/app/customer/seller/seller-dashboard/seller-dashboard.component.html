@@ -1,14 +1,40 @@
 <br />
 <div class="jumbotron p-4 p-md-4 text-white rounded bg-dark">
   <div class="col-md-12 px-0">
-    <h3 class="display-4 font-italic">Welcome to seller dasboard</h3>
-    <p class="lead my-3">Seller can manage product and order details.</p>
+    <h3 class="display-4 font-italic">{{"seller_dashboard.title"| translate}}</h3>
+    <p class="lead my-3">{{"seller_dashboard.subtitle"| translate}}</p>
     <!-- <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p> -->
   </div>
 </div>
 
 <div class="row mb-2">
-  <app-linechart></app-linechart>
-  <app-piechart></app-piechart>
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{"seller_dashboard.line"| translate}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-linechart></app-linechart>
+    </mat-expansion-panel>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{"seller_dashboard.pie"| translate}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-piechart></app-piechart>
+    </mat-expansion-panel>
+  <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{"seller_dashboard.bar"| translate}}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-barchart></app-barchart>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
-

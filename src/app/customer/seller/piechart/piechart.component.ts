@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import * as Highcharts from 'highcharts';
+import { Component, OnInit } from "@angular/core";
+import * as Highcharts from "highcharts";
 
 declare var require: any;
-let Boost = require('highcharts/modules/boost');
-let noData = require('highcharts/modules/no-data-to-display');
-let More = require('highcharts/highcharts-more');
+let Boost = require("highcharts/modules/boost");
+let noData = require("highcharts/modules/no-data-to-display");
+let More = require("highcharts/highcharts-more");
 
 @Component({
   selector: "app-piechart",
@@ -40,9 +40,12 @@ export class PiechartComponent implements OnInit {
         },
       },
     },
+    credits: {
+      enabled: false,
+    },
     series: [
       {
-        name: "Brands",
+        name: "Country",
         colorByPoint: true,
         data: [
           {
@@ -91,6 +94,6 @@ export class PiechartComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    Highcharts.chart('container-pie', this.options);
+    Highcharts.chart("container-pie", this.options);
   }
 }
